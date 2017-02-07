@@ -1,3 +1,11 @@
+# Plaid Link Support
+
+This plugin is a fork of the original cordova-plugin-inappbrowser.
+This fork supports the plaidlink: protocol for Plaid's Webview implementation for IONIC framework for both Android and iOS.
+
+If you want to impelement the plaidlink: protocol in your IONIC App, install it from the branch __plaidlink__
+
+
 ---
 title: Inappbrowser
 description: Open an in-app browser window.
