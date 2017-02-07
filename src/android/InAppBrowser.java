@@ -962,6 +962,17 @@ public class InAppBrowser extends CordovaPlugin {
                     LOG.e(LOG_TAG, "Error with " + url + ": " + e.toString());
                 }
             }
+            else if (url.startsWith("plaidlink:")) {
+              try {
+                  JSONObject obj = new JSONObject();
+                  obj.put("type", LOAD_START_EVENT);
+                  obj.put("url", url);
+                  sendUpdate(obj, true);
+              } catch (JSONException ex) {
+                  LOG.e(LOG_TAG, "URI passed in has caused a JSON error.");
+              }
+              return true;
+            }
             // If sms:5551212?body=This is the message
             else if (url.startsWith("sms:")) {
                 try {
@@ -1008,7 +1019,7 @@ public class InAppBrowser extends CordovaPlugin {
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
             String newloc = "";
-            if (url.startsWith("http:") || url.startsWith("https:") || url.startsWith("file:")) {
+            if (url.startsWith("http:") || url.startsWith("https:") || url.startsWith("file:") || url.startsWith("plaidlink:")) {
                 newloc = url;
             }
             else
